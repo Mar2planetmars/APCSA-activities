@@ -68,10 +68,12 @@ password generator
 - arrays
 - booleans
 
-quiz project
+quiz project 1
 - booleans
 - arrays
 - iteration
+
+
 
 
 
