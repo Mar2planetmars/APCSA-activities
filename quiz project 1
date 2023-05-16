@@ -1,0 +1,175 @@
+public class Main {
+   public static void main(String[] args) {
+   Quiz  csQuiz = new Quiz("Cs Quiz #1");
+   Question q1 = new Question("What do you call a special variable that holds more than one value in Java?", "Array", "boolean", "method", "paramters",'A');
+   Question q2 = new Question("What is the data type for an interger?", "String", "Array", "int", "something", 'C');
+   Question q3 = new Question("What is the date type for a boolean?", "boolean", "boolean", "method", "paramters", 'B');
+   csQuiz.addQuestion(q1);
+   csQuiz.addQuestion(q2);
+   csQuiz.addQuestion(q3);
+   csQuiz.start();
+
+    
+   } 
+}
+
+import java.util.Scanner;
+
+public class InputHelper {
+    static Scanner scan = new Scanner(System.in);
+
+    public static char getChar(String message) {
+        System.out.println(message);
+        String answer = scan.nextLine().toUpperCase();
+        return answer.charAt(0);
+    }
+}
+
+public class Question {
+    private String questionText;
+    private String mcA;
+    private String mcB;
+    private String mcC;
+    private String mcD;
+    private char answer;
+
+
+    public Question(String questionText, String mcA, String mcB, String mcC, String mcD, char answer) {
+        this.questionText = questionText;
+        this.mcA = mcA;
+        this.mcB = mcB;
+        this.mcC = mcC;
+        this.mcD = mcD;
+        this.answer = answer;
+    }
+
+    public void showQuestion(){
+        System.out.println(questionText + "a} " + this.mcA + " b} " + this.mcB + " c} " + this.mcC + " d} " + this.mcD);
+    }
+
+    public String getQuestionText() {
+        return this.questionText;
+    }
+
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
+    }
+
+    public String getMcA() {
+        return this.mcA;
+    }
+
+    public void setMcA(String mcA) {
+        this.mcA = mcA;
+    }
+
+    public String getMcB() {
+        return this.mcB;
+    }
+
+    public void setMcB(String mcB) {
+        this.mcB = mcB;
+    }
+
+    public String getMcC() {
+        return this.mcC;
+    }
+
+    public void setMcC(String mcC) {
+        this.mcC = mcC;
+    }
+
+    public String getMcD() {
+        return this.mcD;
+    }
+
+    public void setMcD(String mcD) {
+        this.mcD = mcD;
+    }
+
+    public char getAnswer() {
+        return this.answer;
+    }
+
+    public void setAnswer(char answer) {
+        this.answer = answer;
+    }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " questionText='" + getQuestionText() + "'" +
+            ", mcA='" + getMcA() + "'" +
+            ", mcB='" + getMcB() + "'" +
+            ", mcC='" + getMcC() + "'" +
+            ", mcD='" + getMcD() + "'" +
+            ", answer='" + getAnswer() + "'" +
+            "}";
+    }
+
+
+}
+
+import java.util.ArrayList;
+public class Quiz {
+    private String quizName;
+    private int numberOfQuestions;
+    private ArrayList<Question> questions;
+    
+    //ctrl shift p
+    public Quiz(String quizName) {
+        this.quizName = quizName;
+        this.questions = new ArrayList<Question>();
+    }
+
+    
+    public void start(){
+        System.out.println("Let's take the " + this.quizName);
+        int count = 0;
+        int score = 0;
+        while (count < this.getNumberOfQuestions()){
+            questions.get(count).showQuestion();
+            char answer = InputHelper.getChar("Type letter for your answer.");
+            if (answer == questions.get(count).getAnswer()){
+                score++;
+            }
+            count++;
+        }
+        System.out.println("You scored " + score + " out of " + this.getNumberOfQuestions());
+    }
+    
+
+    public  void addQuestion(Question q){
+        questions.add(q);
+
+    }
+   
+
+    public String getQuizName() {
+        return this.quizName;
+    }
+
+    public void setQuizName(String quizName) {
+        this.quizName = quizName;
+    }
+
+    public int getNumberOfQuestions() {
+        return questions.size();
+    }
+
+   public void displayQuestions(){
+    for (Question q: questions){
+       System.out.println(q);
+    }
+   }
+   
+    @Override
+    public String toString() {
+        return this.quizName;
+   
+
+
+}
+
+}
