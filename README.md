@@ -55,6 +55,14 @@ control tower
 - iteration
 - getters & setters
 
+deck of cards
+- array list
+- iteration
+- generating random num
+- setters & getters
+- constructors 
+- multiple classes
+
 password generator
 - generating random nums
 - arrays
@@ -64,3 +72,6 @@ quiz project
 - booleans
 - arrays
 - iteration
+
+
+
